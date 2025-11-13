@@ -4,15 +4,13 @@ const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 async function fetchProducts(){
   try {
-    const res = await fetch(`${API}/api/products`)
+    const res = await fetch(`${API}/api/products`, { cache: 'no-store' }) // <- prevent caching
     if (!res.ok) {
-      // not a successful response, return fallback
       console.error('Products fetch failed:', res.status, res.statusText)
       return { products: [] }
     }
     return await res.json()
   } catch (err) {
-    // connection refused or network error
     console.error('Products fetch error:', err)
     return { products: [] }
   }
@@ -41,3 +39,5 @@ export default async function Products(){
     </div>
   )
 }
+
+
