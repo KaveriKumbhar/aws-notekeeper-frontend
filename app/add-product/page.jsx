@@ -10,11 +10,13 @@ export default function AddProduct(){
   const [msg,setMsg]=useState('')
   const router = useRouter()
 
+  const API = process.env.NEXT_PUBLIC_API_URL ?? ''
+
   const submit = async (e)=>{
     e.preventDefault()
     const token = localStorage.getItem('token')
     try{
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products`, { title, description: desc, price }, {
+      await axios.post(`${API}/api/products`, { title, description: desc, price }, {
         headers: { Authorization: `Bearer ${token}` }
       })
       setMsg('Product added')

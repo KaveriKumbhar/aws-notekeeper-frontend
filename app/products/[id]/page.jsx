@@ -1,7 +1,7 @@
 // frontend/app/products/[id]/page.jsx
 import { notFound } from 'next/navigation'
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 
 async function getProduct(id){
   const res = await fetch(`${API}/api/products/${id}`)

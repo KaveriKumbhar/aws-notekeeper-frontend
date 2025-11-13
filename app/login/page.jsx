@@ -8,11 +8,12 @@ export default function Login(){
   const [pass,setPass]=useState('')
   const [err,setErr]=useState('')
   const router = useRouter()
+  const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 
   const submit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/login`, { email, password: pass })
+      const res = await axios.post(`${API}/api/auth/login`, { email, password: pass })
       // store token locally (simple)
       localStorage.setItem('token', res.data.token)
       router.push('/')
