@@ -68,7 +68,7 @@ export default function Products() {
             <p className="text-sm text-slate-600">{p.description}</p>
             <div className="mt-3 flex items-center justify-between">
               <span className="font-bold">₹{p.price}</span>
-              <Link href={`/products/${p._id}`} className="text-blue-600">View</Link>
+              {/* <Link href={`/products/${p._id}`} className="text-blue-600">View</Link> */}
             </div>
           </div>
         ))}
